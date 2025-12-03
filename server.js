@@ -14,7 +14,7 @@ if (!API_KEY) {
 }
 
 app.get("/api/weather", async (req, res) => {
-  const { city } = req.query;
+  const { city } = req.query.city;
 
   if (!city) {
     return res.json({ error: "Please provide a city name" });
@@ -42,7 +42,7 @@ app.get("/api/weather", async (req, res) => {
 });
 
 app.get("/api/forecast", async (req, res) => {
-  const { city } = req.query;
+  const { city } = req.query.city;
 
   if (!city) {
     return res.json({ error: "Please provide a city name" });
