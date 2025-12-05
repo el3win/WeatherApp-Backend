@@ -10,11 +10,13 @@ app.use(express.json());
 const API_KEY = process.env.Weather_API_KEY;
 
 if (!API_KEY) {
-  console.warn("Warning: Weather_API_KEY is not set in environment. Requests may fail.");
+  console.warn(
+    "Warning: Weather_API_KEY is not set in environment. Requests may fail."
+  );
 }
 
 app.get("/api/weather", async (req, res) => {
-  const { city } = req.query.city;
+  const { city } = req.query;
 
   if (!city) {
     return res.json({ error: "Please provide a city name" });
@@ -42,7 +44,7 @@ app.get("/api/weather", async (req, res) => {
 });
 
 app.get("/api/forecast", async (req, res) => {
-  const { city } = req.query.city;
+  const { city } = req.query;
 
   if (!city) {
     return res.json({ error: "Please provide a city name" });
